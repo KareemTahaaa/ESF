@@ -20,15 +20,15 @@ export default function NewsGrid({ news }: NewsGridProps) {
 
   if (newsItems.length === 0) {
     return (
-      <div className="bg-white rounded-lg p-6 sm:p-8 text-center">
-        <p className="text-base sm:text-lg text-gray-600">لا توجد أخبار متاحة حالياً</p>
+      <div className="rounded-lg border border-dashed border-gray-300 bg-white p-8 text-center">
+        <p className="text-gray-600">لا توجد أخبار متاحة حالياً</p>
       </div>
     )
   }
 
   return (
     <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {currentItems.map((item) => (
           <NewsCard
             key={item._id}
@@ -41,34 +41,36 @@ export default function NewsGrid({ news }: NewsGridProps) {
       </div>
 
       {totalPages > 1 && (
-        <div className="flex justify-center mt-8 sm:mt-10 md:mt-12 space-x-1 sm:space-x-2 space-x-reverse">
+        <nav className="mt-10 flex items-center justify-center gap-1" aria-label="صفحات الأخبار">
           <button
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="p-1 sm:p-2 border rounded-md disabled:opacity-50"
-            aria-label="Previous page"
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-300 bg-white text-gray-700 hover:border-gray-400 disabled:opacity-40"
+            aria-label="الصفحة السابقة"
           >
             <ChevronRight className="h-4 w-4" />
           </button>
-
           {Array.from({ length: totalPages }).map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentPage(index + 1)}
-              className={`w-2 h-2 rounded-full ${currentPage === index + 1 ? "bg-red-600" : "bg-gray-300"}`}
-              aria-label={`Page ${index + 1}`}
-            />
+              aria-current={currentPage === index + 1 ? "page" : undefined}
+              className={`h-10 min-w-10 rounded-md px-3 font-bold tabular-nums ${
+                currentPage === index + 1 ? "bg-red-600 text-white" : "border border-gray-300 bg-white text-gray-700 hover:border-gray-400"
+              }`}
+            >
+              {index + 1}
+            </button>
           ))}
-
           <button
             onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
             disabled={currentPage === totalPages}
-            className="p-1 sm:p-2 border rounded-md disabled:opacity-50"
-            aria-label="Next page"
+            className="flex h-10 w-10 items-center justify-center rounded-md border border-gray-300 bg-white text-gray-700 hover:border-gray-400 disabled:opacity-40"
+            aria-label="الصفحة التالية"
           >
             <ChevronLeft className="h-4 w-4" />
           </button>
-        </div>
+        </nav>
       )}
     </div>
   )

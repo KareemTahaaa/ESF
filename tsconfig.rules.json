@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "types": ["node"]
+  },
+  "include": ["lib/competition/**/*.ts", "lib/workspace/**/*.ts", "lib/auth/rate-limit.ts", "lib/auth/__tests__/**/*.ts", "lib/notify/templates.ts", "lib/notify/__tests__/**/*.ts", "supabase/tests/**/*.ts"]
+}

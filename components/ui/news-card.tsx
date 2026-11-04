@@ -1,6 +1,5 @@
 import Image from "next/image"
 import Link from "next/link"
-import { Card, CardContent } from "@/components/ui/card"
 import { Calendar } from "lucide-react"
 import { formatDate } from "@/lib/utils"
 
@@ -21,49 +20,54 @@ interface NewsCardProps {
     }
     sportDisciplines?: Array<{
       _id: string
-      title: string
+      title?: string
+      name?: string
       slug: {
         current: string
       }
     }>
   }
+  // Accepted for existing call sites; the card has one fixed layout.
+  imageHeight?: string
+  showDisciplineIcon?: boolean
+  showDisciplineTitle?: boolean
 }
 
 export default function NewsCard({ news }: NewsCardProps) {
-  // Safely extract image URL
   const imageUrl = news.mainImage?.asset?.url || "/placeholder.svg?height=300&width=400"
-
-  // Ensure excerpt is a string
   const excerpt = typeof news.excerpt === "string" ? news.excerpt : ""
+  const discipline = news.sportDisciplines?.[0]
+  const disciplineName = discipline?.title || discipline?.name
 
   return (
-    <Link href={`/news/${news.slug.current}`}>
-      <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full group">
-        <div className="relative h-48">
-          <Image
-            src={imageUrl || "/placeholder.svg"}
-            alt={news.title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-            unoptimized={imageUrl.includes("placeholder.svg")}
-          />
-          {news.sportDisciplines && news.sportDisciplines.length > 0 && (
-            <div className="absolute top-3 right-3 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-              {news.sportDisciplines[0].title}
-            </div>
-          )}
-        </div>
-        <CardContent className="p-4">
-          <h3 className="font-bold text-lg mb-2 line-clamp-2 group-hover:text-red-600 transition-colors">
-            {news.title}
-          </h3>
-          {excerpt && <p className="text-gray-600 text-sm mb-3 line-clamp-2">{excerpt}</p>}
-          <div className="flex items-center text-gray-500 text-sm">
-            <Calendar className="h-4 w-4 ml-1" />
-            <span>{formatDate(news.publishedAt)}</span>
-          </div>
-        </CardContent>
-      </Card>
+    <Link
+      href={`/news/${news.slug.current}`}
+      className="group flex h-full flex-col overflow-hidden rounded-lg border border-gray-200 bg-white transition-colors hover:border-gray-300"
+    >
+      <div className="relative aspect-[16/10] bg-gray-100">
+        <Image
+          src={imageUrl}
+          alt=""
+          fill
+          className="object-cover"
+          unoptimized={imageUrl.includes("placeholder.svg")}
+        />
+        {disciplineName && (
+          <span className="absolute start-3 top-3 rounded-sm bg-red-600 px-2.5 py-1 text-xs font-bold text-white">
+            {disciplineName}
+          </span>
+        )}
+      </div>
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="line-clamp-2 text-lg font-extrabold leading-snug text-gray-900 group-hover:text-red-600">
+          {news.title}
+        </h3>
+        {excerpt && <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-gray-600">{excerpt}</p>}
+        <p className="mt-auto flex items-center gap-1.5 pt-4 text-sm text-gray-500">
+          <Calendar className="h-4 w-4" aria-hidden />
+          {formatDate(news.publishedAt)}
+        </p>
+      </div>
     </Link>
   )
 }

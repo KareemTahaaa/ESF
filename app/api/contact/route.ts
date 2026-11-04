@@ -1,5 +1,6 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { escapeHtml } from '@/lib/notify/templates';
 
 export async function POST(request: Request) {
     const apiKey = process.env.RESEND_API_KEY;
@@ -25,20 +26,23 @@ export async function POST(request: Request) {
             );
         }
 
+        // Everything below was typed by a visitor: escape it before it goes into the HTML.
+        const e = (v: unknown) => escapeHtml(String(v ?? ''));
+
         const { data, error } = await resend.emails.send({
             from: 'Egyptian Skating Federation <onboarding@resend.dev>', // Should be updated to a verified domain in production
             to: ['secretariat@egyptskate.org'],
-            subject: `New Contact Form Inquiry: ${subject}`,
+            subject: `New Contact Form Inquiry: ${String(subject).replace(/\s+/g, ' ').slice(0, 150)}`,
             replyTo: email,
             html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
-        <p><strong>Department:</strong> ${department || 'General'}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Name:</strong> ${e(firstName)} ${e(lastName)}</p>
+        <p><strong>Email:</strong> ${e(email)}</p>
+        <p><strong>Phone:</strong> ${e(phone || 'Not provided')}</p>
+        <p><strong>Department:</strong> ${e(department || 'General')}</p>
+        <p><strong>Subject:</strong> ${e(subject)}</p>
         <p><strong>Message:</strong></p>
-        <p style="white-space: pre-wrap;">${message}</p>
+        <p style="white-space: pre-wrap;">${e(message)}</p>
         <hr />
         <p>Sent from the Egyptian Skating Federation Website</p>
       `,

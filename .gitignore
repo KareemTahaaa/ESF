@@ -128,3 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Phase 2: legacy verification extract (contains personal data)
+legacy-verify*.json

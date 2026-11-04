@@ -4,9 +4,7 @@ import "./globals.css"
 import { beIN } from "./fonts"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
-import { getSiteSettings, getAllSportDisciplines } from "@/lib/sanity.queries"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
+import { getSiteSettings } from "@/lib/sanity.queries"
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
@@ -33,20 +31,18 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export default async function RootLayout({
+// The public header and footer live in app/(site)/layout.tsx, so the
+// federation and club workspace can use its own chrome.
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const disciplines = await getAllSportDisciplines()
-
   return (
-    <html lang="ar" dir="rtl" className={cn(beIN.variable, "antialiased")}>
+    <html lang="ar" dir="rtl" className={cn(beIN.variable, "antialiased")} suppressHydrationWarning>
       <body className={cn("min-h-screen bg-background font-sans antialiased")}>
         <ThemeProvider attribute="class" defaultTheme="light">
-          <Header disciplines={disciplines} />
           {children}
-          <Footer />
         </ThemeProvider>
       </body>
     </html>
