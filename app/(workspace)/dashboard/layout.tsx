@@ -34,14 +34,14 @@ export default async function WorkspaceLayout({ children }: { children: React.Re
         { href: "/dashboard/federation/requests", label: "طلبات الأندية", badge: requests },
         ...(account.role === "federation_admin" ? [{ href: "/dashboard/federation/import", label: "استيراد البيانات" }] : []),
         { href: "/dashboard/federation/events", label: "الفعاليات والسباقات" },
-        { href: "/dashboard/federation/standings", label: "الترتيب والنقاط", soon: true },
+        { href: "/dashboard/federation/standings", label: "الترتيب والنقاط" },
         { href: "/dashboard/help", label: "دليل الاستخدام" },
       ]
     : [
         { href: "/dashboard/club", label: "نظرة عامة" },
         { href: "/dashboard/club/entries", label: "التسجيل في السباقات" },
         { href: "/dashboard/club/requests", label: "طلبات اللاعبين" },
-        { href: "/dashboard/club/results", label: "النتائج المعتمدة", soon: true },
+        { href: "/dashboard/club/results", label: "النتائج والترتيب" },
         { href: "/dashboard/help", label: "دليل الاستخدام" },
       ]
 

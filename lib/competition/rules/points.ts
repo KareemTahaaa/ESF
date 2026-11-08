@@ -19,8 +19,8 @@
  * Two things the regulations do NOT say, and which are therefore not guessed:
  *  - Whether a shared position consumes the following position(s) (Q6). This is
  *    a ruleset setting, and a tie BLOCKS official publication until confirmed.
- *  - Any effect of DNS/DNF/DQ/FS on position, points, or the participant count
- *    (Q3). A non-`ok` status likewise BLOCKS official publication.
+ *  - DNS/DNF/DQ/FS: answered by the federation (Q3, Q19) — bottom of the
+ *    ranking, no points. Any other status still BLOCKS official publication.
  */
 
 import type { CategoryId, ResultStatus, SeasonRuleset } from "./types"
@@ -115,13 +115,13 @@ export function calculatePoints(
   const blockers: PointsBlocker[] = []
 
   // --- Participant count ----------------------------------------------------
-  // Whether a DQ athlete counts toward the threshold is undefined (Q3). We
-  // exclude non-finishers, and block publication if any are present so the
-  // choice is confirmed rather than assumed.
+  // DNS / DNF / DQ / FS go to the bottom and score nothing (federation answers
+  // to Q3 and Q19); they do not count toward the threshold. A status the
+  // federation has not ruled on still blocks publication.
   const finishers = entries.filter((e) => e.status === "ok")
   const participantCount = finishers.length
 
-  const nonFinishers = entries.filter((e) => e.status !== "ok")
+  const nonFinishers = entries.filter((e) => !["ok", "dns", "dnf", "dq", "fs"].includes(e.status))
   if (nonFinishers.length > 0) {
     blockers.push({
       openQuestion: "Q3",

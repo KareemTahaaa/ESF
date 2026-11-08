@@ -132,8 +132,16 @@ describe("ties — `يتم منح النقاط بالتساوي`", () => {
   })
 })
 
-describe("non-finisher statuses block publication (Q3)", () => {
-  it.each(["dns", "dnf", "dq", "fs", "unknown"] as const)("%s scores 0 and blocks", (status) => {
+describe("non-finisher statuses (Q3, Q19 answered: no points)", () => {
+  it.each(["dns", "dnf", "dq", "fs"] as const)("%s scores 0 and does not block", (status) => {
+    const result = calculatePoints("senior", [entry("a", 1), entry("b", 2), entry("c", 3), entry("d", null, status)], ruleset)
+    const d = result.awards.find((a) => a.athleteId === "d")!
+    expect(d.points).toBe(0)
+    expect(d.zeroReason).toBe("non_finisher_status")
+    expect(mayPublishOfficially(result)).toBe(true)
+  })
+
+  it.each(["unknown"] as const)("a status with no ruling (%s) scores 0 and blocks", (status) => {
     const result = calculatePoints(
       "senior",
       [entry("a", 1), entry("b", 2), entry("c", 3), entry("d", null, status)],
@@ -147,8 +155,8 @@ describe("non-finisher statuses block publication (Q3)", () => {
   })
 
   it("names the statuses present so an admin can act on the message", () => {
-    const result = calculatePoints("senior", [entry("a", 1), entry("b", 2), entry("c", null, "dq")], ruleset)
-    expect(result.blockers.find((b) => b.openQuestion === "Q3")!.detail).toMatch(/dq/)
+    const result = calculatePoints("senior", [entry("a", 1), entry("b", 2), entry("c", null, "unknown")], ruleset)
+    expect(result.blockers.find((b) => b.openQuestion === "Q3")!.detail).toMatch(/unknown/)
   })
 })
 

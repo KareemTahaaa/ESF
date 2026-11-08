@@ -280,6 +280,26 @@ The brief requires a correction workflow (permission, reason, old/new value pres
 
 ---
 
+## Q17 — Places 5th–8th in knockout races — **ANSWERED 2026-11-08**
+
+> Only the places the final decides score: 1st–4th (100m: Final A = 1st/2nd, Final B = 3rd/4th). Athletes knocked out in the quarter- or semi-final score nothing. The 200m final of 12 is ranked by time (1st–12th); long-distance races use the places the officials record. Implemented in `lib/competition/standings.ts`.
+
+## Q18 — Does level B score points? — **ANSWERED 2026-11-08: no**
+
+> Level B is ranked after level A, so it never reaches the scoring places. Level B athletes also do not count toward the three-athlete minimum.
+
+## Q19 — Do DNS / DNF / DQ / FS score the points of their bottom place? — **ANSWERED 2026-11-08: no**
+
+> They go to the bottom of the ranking (Q3) and score nothing, even in a small field.
+
+## Q20 — Do the Qualifications award season points? — **ANSWERED 2026-11-08: no**
+
+> The Qualifications only decide level A / B and seeding; season points come from the National League and the Egypt Cup.
+
+## Q21 — Points table for merged junior + youth long-distance races — DEFAULTED
+
+> **Assumption, to confirm:** the merged race is run and counted as one category under the senior name (شباب), so every athlete in it scores from the شباب table and the three-athlete minimum counts the whole merged field. If the federation wants each athlete scored from their own category's table, this is one change in `standings.ts`.
+
 ## Resolution process
 
 1. Federation reviews this document and answers in writing.
