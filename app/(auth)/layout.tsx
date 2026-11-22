@@ -19,6 +19,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       </main>
 
       <aside aria-hidden className="relative hidden overflow-hidden bg-ws-asphalt text-ws-asphalt-ink lg:block">
+        {/* The start line. */}
+        <div className="absolute inset-x-0 bottom-[18%] h-[3px] bg-ws-red" />
         <div className="relative flex h-full flex-col justify-start p-12">
           <Image src="/logo-white.png" alt="" width={72} height={72} className="h-16 w-auto self-start" />
           <p className="mt-10 max-w-sm font-extrabold text-3xl leading-snug">منصة الأندية لسباقات السرعة</p>
