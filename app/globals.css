@@ -106,3 +106,63 @@ html[dir="rtl"] .prose blockquote {
   padding-right: 1em;
   padding-left: 0;
 }
+
+/* -------------------------------------------------------------------------
+   Federation and club workspace (dashboards, sign-in, sign-up).
+   Scoped to .esf-ws. Values are the public website's own palette
+   (Tailwind red-600 / gray-900 / gray-100 and Cairo), so the workspace and
+   the site read as one product. Status colours stay distinct from the red.
+   ------------------------------------------------------------------------- */
+.esf-ws {
+  --ws-paper: #F3F4F6;
+  --ws-raised: #FFFFFF;
+  --ws-sunk: #F9FAFB;
+  --ws-ink: #111827;
+  --ws-soft: #374151;
+  --ws-muted: #4B5563;
+  --ws-rule: #E5E7EB;
+  --ws-asphalt: #111827;
+  --ws-asphalt-ink: #F9FAFB;
+  --ws-asphalt-muted: #9CA3AF;
+  --ws-red: #DC2626;
+  --ws-red-wash: #FEF2F2;
+  --ws-ok: #15803D;
+  --ws-ok-wash: #F0FDF4;
+  --ws-wait: #B45309;
+  --ws-wait-wash: #FFFBEB;
+  --ws-stop: #991B1B;
+  --ws-stop-wash: #FEE2E2;
+  background: var(--ws-paper);
+  color: var(--ws-ink);
+  font-family: var(--font-bein), Tahoma, sans-serif;
+}
+
+.dark .esf-ws {
+  --ws-paper: #111827;
+  --ws-raised: #1F2937;
+  --ws-sunk: #0B1220;
+  --ws-ink: #F9FAFB;
+  --ws-soft: #D1D5DB;
+  --ws-muted: #9CA3AF;
+  --ws-rule: #374151;
+  --ws-asphalt: #030712;
+  --ws-asphalt-ink: #F9FAFB;
+  --ws-asphalt-muted: #9CA3AF;
+  --ws-red: #F87171;
+  --ws-red-wash: #450A0A;
+  --ws-ok: #4ADE80;
+  --ws-ok-wash: #052E16;
+  --ws-wait: #FBBF24;
+  --ws-wait-wash: #451A03;
+  --ws-stop: #FCA5A5;
+  --ws-stop-wash: #450A0A;
+}
+
+.esf-ws :focus-visible {
+  outline: 2px solid var(--ws-red);
+  outline-offset: 2px;
+}
+
+.esf-ws .tabular {
+  font-variant-numeric: tabular-nums;
+}

@@ -1,6 +1,5 @@
 import { Mail, Phone, MapPin } from "lucide-react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
 
 interface ContactSectionProps {
   contactInfo?: any
@@ -11,43 +10,36 @@ export default function ContactSection({ contactInfo }: ContactSectionProps) {
   const phone = contactInfo?.phone || "+20 100 123 4567"
   const address = contactInfo?.address || "القاهرة، مصر"
 
+  const items = [
+    { Icon: Mail, label: "البريد الإلكتروني", value: <a href={`mailto:${email}`} dir="ltr" className="hover:text-red-600">{email}</a> },
+    { Icon: Phone, label: "الهاتف", value: <a href={`tel:${phone}`} dir="ltr" className="hover:text-red-600">{phone}</a> },
+    { Icon: MapPin, label: "العنوان", value: <span>{address}</span> },
+  ]
+
   return (
-    <section className="py-16 bg-gradient-to-l from-red-600 to-red-700">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">تواصل معنا</h2>
-          <p className="text-xl text-red-100 mb-8">نحن هنا للإجابة على استفساراتكم ومساعدتكم</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
-              <Mail className="h-8 w-8 mx-auto mb-3" />
-              <h3 className="font-bold mb-2">البريد الإلكتروني</h3>
-              <a href={`mailto:${email}`} className="text-red-100 hover:text-white">
-                {email}
-              </a>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
-              <Phone className="h-8 w-8 mx-auto mb-3" />
-              <h3 className="font-bold mb-2">الهاتف</h3>
-              <a href={`tel:${phone}`} className="text-red-100 hover:text-white" dir="ltr">
-                {phone}
-              </a>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-white">
-              <MapPin className="h-8 w-8 mx-auto mb-3" />
-              <h3 className="font-bold mb-2">العنوان</h3>
-              <p className="text-red-100">{address}</p>
-            </div>
-          </div>
-
-          <Link href="/contact">
-            <Button size="lg" variant="secondary" className="bg-white text-red-600 hover:bg-red-50">
-              انتقل إلى صفحة الاتصال ←
-            </Button>
+    <section className="border-t border-gray-200 bg-white py-16 md:py-20">
+      <div className="container mx-auto grid gap-10 px-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:items-center">
+        <div>
+          <h2 className="text-3xl font-black text-gray-900 md:text-4xl">تواصل معنا</h2>
+          <div className="mt-3 h-1 w-14 bg-red-600" aria-hidden />
+          <p className="mt-4 max-w-md leading-relaxed text-gray-600">نحن هنا للإجابة على استفساراتكم ومساعدتكم.</p>
+          <Link
+            href="/contact"
+            className="mt-6 inline-flex rounded-md bg-red-600 px-5 py-2.5 font-bold text-white transition-colors hover:bg-red-700"
+          >
+            أرسل رسالة
           </Link>
         </div>
+
+        <dl className="grid divide-y divide-gray-200 rounded-lg border border-gray-200 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:divide-x-reverse">
+          {items.map(({ Icon, label, value }) => (
+            <div key={label} className="flex flex-col gap-2 p-6">
+              <Icon className="h-6 w-6 text-red-600" aria-hidden />
+              <dt className="text-sm text-gray-500">{label}</dt>
+              <dd className="break-words font-bold text-gray-900">{value}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
     </section>
   )

@@ -1,0 +1,222 @@
+{
+  "season": "2026-2027",
+  "source": "Races 2026-2027.docx",
+  "races": [
+    {
+      "number": 1,
+      "championship": "qualifications",
+      "championshipAr": "جولة التصفيات",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "تصفيات 200m",
+      "ruleAr": "تصفيات 200m– يتأهل أفضل 12 زمن"
+    },
+    {
+      "number": 2,
+      "championship": "qualifications",
+      "championshipAr": "جولة التصفيات",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "تصفيات 500m",
+      "ruleAr": "تصفيات 500m – يتأهل أفضل 16 زمن"
+    },
+    {
+      "number": 3,
+      "championship": "qualifications",
+      "championshipAr": "جولة التصفيات",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "تصفيات 800/1000m",
+      "ruleAr": "تصفيات 800/1000m - يتأهل المركز الأول وأفضل أزمنة (24 متأهلين)"
+    },
+    {
+      "number": 4,
+      "championship": "qualifications",
+      "championshipAr": "جولة التصفيات",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "تصفيات 100m",
+      "ruleAr": "تصفيات 100m – يتأهل أفضل 16 زمن"
+    },
+    {
+      "number": 5,
+      "championship": "qualifications",
+      "championshipAr": "جولة التصفيات",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "تصفيات One Lap",
+      "ruleAr": "تصفيات One Lap – يتأهل أفضل 16 زمن"
+    },
+    {
+      "number": 6,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "500m دور ال 16 + مستوى B",
+      "ruleAr": "دور ال 16 يتأهل المركز الأول والثاني لكل heat – (8 متأهلين) مستوى B"
+    },
+    {
+      "number": 7,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "800/1000m دور ال 24 ودور نصف النهائي+ مستوى B",
+      "ruleAr": "دور ال 24 – يتأهل المركز الأول وأفضل أزمنة (12 متأهلين) دور نصف النهائي – يتأهل المركز الأول وأفضل أزمنة (4 متأهلين) مستوى B"
+    },
+    {
+      "number": 8,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "100m دور ال 16 + مستوى B",
+      "ruleAr": "دور ال 16 – يتأهل المركز الأول لكل heat – (8 متأهلين) مستوى B"
+    },
+    {
+      "number": 9,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "One Lap دور ال 16 + مستوى B",
+      "ruleAr": "دور ال 16 –يتأهل المركز الأول والثاني لكل heat – (8 متأهلين) مستوى B"
+    },
+    {
+      "number": 10,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "نهائي الدوري العام 200m + مستوى B",
+      "ruleAr": "200m: دور النهائي مستوى B"
+    },
+    {
+      "number": 11,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "نهائي الدوري العام 500m",
+      "ruleAr": "500m: نصف النهائي – النهائي"
+    },
+    {
+      "number": 12,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "نهائي الدوري العام 800/1000m",
+      "ruleAr": "800/1000m: دور النهائي"
+    },
+    {
+      "number": 13,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "نهائي الدوري العام 100m",
+      "ruleAr": "100m: دور ال8 – نصف النهائي – النهائي"
+    },
+    {
+      "number": 14,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "نهائي الدوري العام One Lap",
+      "ruleAr": "One Lap: نصف النهائي – النهائي"
+    },
+    {
+      "number": 15,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "مسافات طويلة",
+      "ruleAr": "5K Track Points – مراحل شباب و عمومي"
+    },
+    {
+      "number": 16,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "مسافات طويلة",
+      "ruleAr": "10K Track Elimination - مراحل شباب و عمومي"
+    },
+    {
+      "number": 17,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "مسافات طويلة",
+      "ruleAr": "10K Road Points- مراحل شباب و عمومي"
+    },
+    {
+      "number": 18,
+      "championship": "national_league",
+      "championshipAr": "الدوري العام",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "مسافات طويلة",
+      "ruleAr": "15K Road Elimination - مراحل شباب و عمومي"
+    },
+    {
+      "number": 19,
+      "championship": "egypt_cup",
+      "championshipAr": "كأس مصر",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "800/1000m دور ال 24 ودور ال 12 + مستوى B",
+      "ruleAr": "دور ال 24 – يتأهل المركز الأول وأفضل أزمنة (12 متأهلين) دور ال 12– يتأهل المركز الأول وأفضل أزمنة (4 متأهلين) مستوى B"
+    },
+    {
+      "number": 20,
+      "championship": "egypt_cup",
+      "championshipAr": "كأس مصر",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "100m دور ال 16 + مستوى B",
+      "ruleAr": "دور ال 16 – يتأهل المركز الأول لكل heat – (8 متأهلين) مستوى B"
+    },
+    {
+      "number": 21,
+      "championship": "egypt_cup",
+      "championshipAr": "كأس مصر",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "One Lap دور ال 16 + مستوى B",
+      "ruleAr": "دور ال 16 –يتأهل المركز الأول والثاني لكل heat – (8 متأهلين) مستوى B"
+    },
+    {
+      "number": 22,
+      "championship": "egypt_cup",
+      "championshipAr": "كأس مصر",
+      "venueAr": "مدرسة بن مسعود",
+      "surface": "track",
+      "raceAr": "نهائي الدوري العام 800/1000m",
+      "ruleAr": "800/1000m: دور النهائي"
+    },
+    {
+      "number": 23,
+      "championship": "egypt_cup",
+      "championshipAr": "كأس مصر",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "نهائي الدوري العام 100m",
+      "ruleAr": "100m: دور ال8 – نصف النهائي – النهائي"
+    },
+    {
+      "number": 24,
+      "championship": "egypt_cup",
+      "championshipAr": "كأس مصر",
+      "venueAr": "ايروسبورت",
+      "surface": "road",
+      "raceAr": "نهائي الدوري العام One Lap",
+      "ruleAr": "One Lap: نصف النهائي – النهائي"
+    }
+  ]
+}

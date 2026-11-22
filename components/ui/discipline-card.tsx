@@ -8,6 +8,7 @@ export interface DisciplineCardProps {
   discipline: {
     _id: string
     name: string
+    title?: string
     description?: string
     slug: { current: string }
     image: any
@@ -26,53 +27,52 @@ export interface DisciplineCardProps {
 export default function DisciplineCard({
   discipline,
   showDescription = true,
-  imageHeight = "h-64",
+  imageHeight = "h-72",
   className = "",
   iconSize = {
-    containerSize: "w-16 h-16",
-    padding: "p-3",
+    containerSize: "w-14 h-14",
+    padding: "p-2.5",
     imageSize: 40,
   },
 }: DisciplineCardProps) {
-  // Safely extract image URL
+  const name = discipline.name || discipline.title || ""
   const imageUrl =
-    discipline.image?.asset?.url || urlForImage(discipline.image).url() || "/placeholder.svg?height=300&width=500"
-
-  // Safely extract icon URL
-  const iconUrl = discipline.icon?.asset?.url || urlForImage(discipline.icon).url() || null
-
-  // Ensure description is a string
+    discipline.image?.asset?.url ||
+    (discipline.image ? urlForImage(discipline.image).url() : null) ||
+    "/placeholder.svg?height=300&width=500"
+  const iconUrl = discipline.icon?.asset?.url || (discipline.icon ? urlForImage(discipline.icon).url() : null)
   const description = typeof discipline.description === "string" ? discipline.description : ""
 
   return (
     <Link
       href={`/disciplines/${discipline.slug.current}`}
-      className={`group relative overflow-hidden rounded-lg ${imageHeight} ${className}`}
+      className={`group relative block overflow-hidden rounded-lg bg-gray-900 ${imageHeight} ${className}`}
     >
       <Image
-        src={imageUrl || "/placeholder.svg"}
-        alt={discipline.name}
+        src={imageUrl}
+        alt=""
         fill
-        className="object-cover transition-transform duration-500 group-hover:scale-110"
+        className="object-cover opacity-80 transition-opacity duration-300 group-hover:opacity-100"
         unoptimized={imageUrl.includes("placeholder.svg")}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent" />
       {iconUrl && (
-        <div className={`absolute top-4 right-4 bg-white rounded-full ${iconSize.padding} ${iconSize.containerSize}`}>
+        <div className={`absolute start-4 top-4 rounded-md bg-white ${iconSize.padding} ${iconSize.containerSize}`}>
           <Image
-            src={iconUrl || "/placeholder.svg"}
-            alt={`${discipline.name} icon`}
+            src={iconUrl}
+            alt=""
             width={iconSize.imageSize}
             height={iconSize.imageSize}
-            className="w-full h-full object-contain"
+            className="h-full w-full object-contain"
             unoptimized={iconUrl.includes("placeholder.svg")}
           />
         </div>
       )}
-      <div className="absolute bottom-0 right-0 p-6 text-white">
-        <h2 className="text-2xl font-bold mb-2">{discipline.name}</h2>
-        {showDescription && description && <p className="text-sm opacity-80 line-clamp-2">{description}</p>}
+      <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+        <h3 className="text-2xl font-black">{name}</h3>
+        {showDescription && description && <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-gray-300">{description}</p>}
       </div>
+      <div className="absolute inset-x-0 bottom-0 h-1 origin-right scale-x-0 bg-red-600 transition-transform duration-300 group-hover:scale-x-100 group-focus-visible:scale-x-100" />
     </Link>
   )
 }
